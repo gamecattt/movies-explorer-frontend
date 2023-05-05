@@ -20,7 +20,8 @@ function Portfolio() {
               </a>
             </li>
             <li className="portfolio__item">
-              <a href="https://github.com/gamecattt/react-mesto-api-full-gha" target='_blank' className="portfolio__link" >
+              <a href="https://github.com/gamecattt/react-mesto-api-full-gha" target='_blank'
+                 className="portfolio__link">
                 <span className="portfolio__project-name">Одностраничное приложение</span>
                 <img className="portfolio__arrow" src={arrow} alt="Ссылка"/>
               </a>

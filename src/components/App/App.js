@@ -14,19 +14,19 @@ function App() {
   const location = useLocation();
 
   return (
-    <div className="page__wrapper">
-      {['/', '/movies', '/saved-movies', '/profile'].includes(location.pathname) ? <Header/> : ''}
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/saved-movies" element={<SavedMovies />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/signin" element={<Login />} />
-        <Route path="/signup" element={<Register />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
-      {['/', '/movies', '/saved-movies'].includes(location.pathname) ? <Footer/> : ''}
-    </div>
+      <div className="page__wrapper">
+        {['/', '/movies', '/saved-movies', '/profile'].includes(location.pathname) ? <Header/> : ''}
+        <Routes>
+          <Route path="/" element={<Main/>}/>
+          <Route path="/movies" element={<Movies/>}/>
+          <Route path="/saved-movies" element={<SavedMovies/>}/>
+          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/signin" element={<Login/>}/>
+          <Route path="/signup" element={<Register/>}/>
+          <Route path="*" element={<ErrorPage/>}/>
+        </Routes>
+        {['/', '/movies', '/saved-movies'].includes(location.pathname) ? <Footer/> : ''}
+      </div>
   );
 }
 

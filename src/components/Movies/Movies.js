@@ -21,18 +21,18 @@ function Movies() {
   const [isLoading, setIsLoading] = useState(true);
 
   const movies = [
-    { id: 1, title: '33 слова о дизайне', time: '1ч 47м', image: image1, saved: true },
-    { id: 2, title: '33 слова о дизайне', time: '1ч 47м', image: image2, saved: false },
-    { id: 3, title: '33 слова о дизайне', time: '1ч 47м', image: image3, saved: false },
-    { id: 4, title: '33 слова о дизайне', time: '1ч 47м', image: image4, saved: false },
-    { id: 5, title: '33 слова о дизайне', time: '1ч 47м', image: image5, saved: false },
-    { id: 6, title: '33 слова о дизайне', time: '1ч 47м', image: image6, saved: false },
-    { id: 7, title: '33 слова о дизайне', time: '1ч 47м', image: image7, saved: false },
-    { id: 8, title: '33 слова о дизайне', time: '1ч 47м', image: image8, saved: false },
-    { id: 9, title: '33 слова о дизайне', time: '1ч 47м', image: image9, saved: false },
-    { id: 10, title: '33 слова о дизайне', time: '1ч 47м', image: image10, saved: false },
-    { id: 11, title: '33 слова о дизайне', time: '1ч 47м', image: image11, saved: false },
-    { id: 12, title: '33 слова о дизайне', time: '1ч 47м', image: image12, saved: false },
+    {id: 1, title: '33 слова о дизайне', time: '1ч 47м', image: image1, saved: true},
+    {id: 2, title: '33 слова о дизайне', time: '1ч 47м', image: image2, saved: false},
+    {id: 3, title: '33 слова о дизайне', time: '1ч 47м', image: image3, saved: false},
+    {id: 4, title: '33 слова о дизайне', time: '1ч 47м', image: image4, saved: false},
+    {id: 5, title: '33 слова о дизайне', time: '1ч 47м', image: image5, saved: false},
+    {id: 6, title: '33 слова о дизайне', time: '1ч 47м', image: image6, saved: false},
+    {id: 7, title: '33 слова о дизайне', time: '1ч 47м', image: image7, saved: false},
+    {id: 8, title: '33 слова о дизайне', time: '1ч 47м', image: image8, saved: false},
+    {id: 9, title: '33 слова о дизайне', time: '1ч 47м', image: image9, saved: false},
+    {id: 10, title: '33 слова о дизайне', time: '1ч 47м', image: image10, saved: false},
+    {id: 11, title: '33 слова о дизайне', time: '1ч 47м', image: image11, saved: false},
+    {id: 12, title: '33 слова о дизайне', time: '1ч 47м', image: image12, saved: false},
   ];
 
   setTimeout(() => {
@@ -43,7 +43,7 @@ function Movies() {
       <>
         <SearchForm/>
         <section className="movies extra-indent_theme_double">
-          {isLoading ? <Preloader /> :
+          {isLoading ? <Preloader/> :
               <>
                 <MoviesCardList movies={movies}/>
                 <button className="movies__button">Ещё</button>

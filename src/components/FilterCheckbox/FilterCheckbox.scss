@@ -41,6 +41,7 @@
 		&:checked + .filter-checkbox__icon {
 			background: #4bd865;
 		}
+
 		&:checked + .filter-checkbox__icon:after {
 			transform: translateX(16px);
 		}

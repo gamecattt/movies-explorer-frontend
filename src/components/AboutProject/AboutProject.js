@@ -4,7 +4,7 @@ import './AboutProject.scss'
 function AboutProject() {
   return (
       <section className="about-project extra-indent_theme_double" id="about-project">
-        <Headline text="О проекте" />
+        <Headline text="О проекте"/>
         <div className="about-project__two-columns">
           <div className="about-project__column">
             <h4 className="about-project__subtitle">Дипломный проект включал 5 этапов</h4>

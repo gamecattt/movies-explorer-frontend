@@ -8,9 +8,9 @@ import SearchForm from "../SearchForm/SearchForm";
 function SavedMovies() {
 
   const movies = [
-    { id: 1, title: '33 слова о дизайне', time: '1ч 47м', image: image1 },
-    { id: 2, title: '33 слова о дизайне', time: '1ч 47м', image: image2 },
-    { id: 3, title: '33 слова о дизайне', time: '1ч 47м', image: image3 },
+    {id: 1, title: '33 слова о дизайне', time: '1ч 47м', image: image1},
+    {id: 2, title: '33 слова о дизайне', time: '1ч 47м', image: image2},
+    {id: 3, title: '33 слова о дизайне', time: '1ч 47м', image: image3},
   ];
 
   return (

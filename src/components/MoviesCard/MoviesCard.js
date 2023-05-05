@@ -4,18 +4,18 @@ import './MoviesCard.scss'
 
 function MoviesCard(props) {
   return (
-    <li className="movies__card">
-      <div className="movies__heading">
-        <div className="movies__info">
-          <h2 className="movies__title">{props.title}</h2>
-          <span className="movies__time">{props.time}</span>
+      <li className="movies__card">
+        <div className="movies__heading">
+          <div className="movies__info">
+            <h2 className="movies__title">{props.title}</h2>
+            <span className="movies__time">{props.time}</span>
+          </div>
+          <button className={'movies__card-btn ' + (props.saved ? 'movies__card-btn_active' : '')}>
+            <img src={props.isSavedList ? iconDelete : iconSave} alt="Сохранить"/>
+          </button>
         </div>
-        <button className={'movies__card-btn ' + (props.saved ? 'movies__card-btn_active' : '')}>
-          <img src={props.isSavedList ? iconDelete : iconSave} alt="Сохранить"/>
-        </button>
-      </div>
-      <img className="movies__card-img" src={props.image} alt={props.title}/>
-    </li>
+        <img className="movies__card-img" src={props.image} alt={props.title}/>
+      </li>
   );
 }
 
