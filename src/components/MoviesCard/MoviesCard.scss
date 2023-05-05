@@ -6,6 +6,12 @@
 		align-items: center;
 		background-color: #222222;
 		padding: 12px 14px;
+		overflow: hidden;
+		gap: 10px;
+	}
+
+	&__info {
+		overflow: hidden;
 	}
 
 	&__title {
@@ -13,6 +19,9 @@
 		font-size: 15px;
 		line-height: 18px;
 		margin: 0 0 6px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	&__time {
@@ -24,6 +33,7 @@
 	&__card-btn {
 		width: 30px;
 		height: 30px;
+		min-width: 30px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -44,5 +54,6 @@
 
 	&__card-img {
 		display: block;
+		max-width: 100%;
 	}
 }

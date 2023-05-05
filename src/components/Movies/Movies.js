@@ -21,7 +21,7 @@ function Movies() {
   const [isLoading, setIsLoading] = useState(true);
 
   const movies = [
-    {id: 1, title: '33 слова о дизайне', time: '1ч 47м', image: image1, saved: true},
+    {id: 1, title: '33 слова о дизайне 33 слова о дизайне 33 слова о дизайне', time: '1ч 47м', image: image1, saved: true},
     {id: 2, title: '33 слова о дизайне', time: '1ч 47м', image: image2, saved: false},
     {id: 3, title: '33 слова о дизайне', time: '1ч 47м', image: image3, saved: false},
     {id: 4, title: '33 слова о дизайне', time: '1ч 47м', image: image4, saved: false},
