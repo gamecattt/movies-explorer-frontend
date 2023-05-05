@@ -1,0 +1,48 @@
+.movies {
+
+	&__heading {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background-color: #222222;
+		padding: 12px 14px;
+	}
+
+	&__title {
+		font-weight: 500;
+		font-size: 15px;
+		line-height: 18px;
+		margin: 0 0 6px;
+	}
+
+	&__time {
+		font-size: 11px;
+		line-height: 13px;
+		color: #8b8b8b;
+	}
+
+	&__card-btn {
+		width: 30px;
+		height: 30px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: none;
+		background: #313131;
+		border-radius: 36px;
+		cursor: pointer;
+		transition: all 0.7s;
+
+		&:hover {
+			background-color: #3ddc84;
+		}
+
+		&_active {
+			background-color: #3ddc84;
+		}
+	}
+
+	&__card-img {
+		display: block;
+	}
+}

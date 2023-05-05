@@ -1,0 +1,140 @@
+.auth {
+	margin: 70px auto;
+	padding: 0 30px;
+	box-sizing: border-box;
+	max-width: 456px;
+
+	&__heading {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+	}
+
+	&__title {
+		font-weight: 500;
+		font-size: 24px;
+		line-height: 29px;
+		margin: 40px 0 24px;
+	}
+}
+
+.auth-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 429px;
+
+	&__bottom {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	&__btn-submit {
+		color: #fff;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 17px;
+		background-color: #4285f4;
+		border-radius: 3px;
+		cursor: pointer;
+		border: 0;
+		width: 100%;
+		padding: 13px 0 15px;
+		transition: opacity 0.2s;
+
+		&:hover {
+			opacity: 0.8;
+		}
+
+		&:disabled {
+			opacity: 0.2;
+			color: #202020;
+			background: transparent;
+			cursor: default;
+		}
+	}
+
+	&__caption {
+		font-size: 10px;
+		line-height: 12px;
+		color: #8b8b8b;
+		margin: 18px 0 5px;
+	}
+
+	&__error-msg {
+		color: #ee3465;
+		font-size: 10px;
+		line-height: 12px;
+		min-height: 30px;
+	}
+
+	&__input {
+		background: none;
+		border: none;
+		color: #fff;
+		font-size: 14px;
+		line-height: 17px;
+		padding-bottom: 10px;
+		outline: none;
+		border-bottom: 1px solid #424242;
+		cursor: pointer;
+		transition: border-color 0.2s;
+		margin-bottom: 6px;
+
+		&:focus {
+			border-color: #4285f4;
+		}
+
+		&_type_error {
+			color: #ee3465;
+		}
+	}
+
+	&__link {
+		color: #4285f4;
+		text-decoration: none;
+		transition: opacity 0.2s;
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+
+	&__text {
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 17px;
+		margin-top: 16px;
+		color: #8b8b8b;
+	}
+
+	&__top {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.auth {
+		margin: 232px auto;
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.auth {
+		margin: 56px auto 30px;
+
+		&__heading {
+			align-items: center;
+		}
+	}
+
+	.auth-form {
+
+		&__btn-submit,
+		&__text {
+			font-size: 12px;
+			line-height: 15px;
+		}
+	}
+}

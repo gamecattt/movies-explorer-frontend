@@ -1,0 +1,39 @@
+.movies {
+	margin-bottom: 80px;
+
+	&__button {
+		display: block;
+		margin: 80px auto 0;
+		padding: 11px 0 9px;
+		border: 0;
+		max-width: 320px;
+		width: 100%;
+		font-weight: 500;
+		font-size: 12px;
+		line-height: 15px;
+		background-color: #202020;
+		color: #fff;
+		border: 1px solid #424242;
+		border-radius: 6px;
+		box-sizing: border-box;
+		cursor: pointer;
+		transition: all 0.5s;
+
+		&:hover {
+			background-color: #2f2f2f;
+		}
+	}
+
+	&__card-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		row-gap: 30px;
+		column-gap: 24px;
+		grid-template-columns: repeat(auto-fill, minmax(364px, 1fr));
+	}
+
+
+
+}

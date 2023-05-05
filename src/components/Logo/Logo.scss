@@ -1,0 +1,12 @@
+.logo {
+
+	&__img {
+		width: 38px;
+		height: 38px;
+		transition: all 0.7s ease-in-out;
+
+		&:hover {
+			transform: scale(1.2);
+		}
+	}
+}
