@@ -42,7 +42,7 @@ function Movies() {
   return (
       <>
         <SearchForm/>
-        <section className="movies extra-indent_theme_double">
+        <section className="movies extra-indent extra-indent_theme_double">
           {isLoading ? <Preloader/> :
               <>
                 <MoviesCardList movies={movies}/>

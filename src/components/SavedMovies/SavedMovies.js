@@ -16,7 +16,7 @@ function SavedMovies() {
   return (
       <>
         <SearchForm/>
-        <section className="movies extra-indent_theme_double">
+        <section className="movies extra-indent extra-indent_theme_double">
           <MoviesCardList movies={movies} isSavedList={true}/>
         </section>
       </>

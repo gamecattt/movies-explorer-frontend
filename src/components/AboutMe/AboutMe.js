@@ -5,7 +5,7 @@ import photo from '../../images/photo.jpg';
 
 function AboutMe() {
   return (
-      <section className="about-me extra-indent_theme_double" id="about-me">
+      <section className="about-me extra-indent extra-indent_theme_double" id="about-me">
         <Headline text="Студент"/>
         <div className="about-me__info">
           <div className="about-me__main-text">

@@ -23,8 +23,12 @@
 		}
 
 		&_theme_opacity {
-			background-color: transparent;
-			color: #a0a0a0;
+
+			.about-project__scale-left,
+			.about-project__scale-right {
+				background-color: transparent;
+				color: #a0a0a0;
+			}
 		}
 	}
 

@@ -9,7 +9,7 @@ function Register() {
           <Logo/>
           <h1 className="auth__title">Добро пожаловать!</h1>
         </div>
-        <form className="auth-form" action="">
+        <form className="auth-form" action="#">
           <div className="auth-form__top">
             <span className="auth-form__caption">Имя</span>
             <input

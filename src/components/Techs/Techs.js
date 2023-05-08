@@ -3,7 +3,7 @@ import './Techs.scss';
 
 function Techs() {
   return (
-      <section className="techs extra-indent_theme_double" id="techs">
+      <section className="techs extra-indent extra-indent_theme_double" id="techs">
         <Headline text="Технологии"/>
         <h3 className="techs__title">7 технологий</h3>
         <p className="techs__text">

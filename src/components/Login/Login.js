@@ -9,7 +9,7 @@ function Login() {
           <Logo/>
           <h1 className="auth__title">Рады видеть!</h1>
         </div>
-        <form className="auth-form" action="">
+        <form className="auth-form" action="#">
           <div className="auth-form__top">
             <span className="auth-form__caption">E-mail</span>
             <input className="auth-form__input" name="email" type="email" required id="email-input"/>
