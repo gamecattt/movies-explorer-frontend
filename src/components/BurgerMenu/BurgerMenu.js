@@ -1,9 +1,10 @@
 import './BurgerMenu.scss';
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {useState} from "react";
 
 function BurgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   function handleClick() {
     setIsOpen(!isOpen);
@@ -22,11 +23,18 @@ function BurgerMenu() {
 
         <div className="burger-menu__wrap">
           <nav className="burger-menu__nav">
-            <Link to="/" className="burger-menu__nav-link">Главная</Link>
-            <Link to="/movies" className="burger-menu__nav-link burger-menu__nav-link_active">Фильмы</Link>
-            <Link to="/saved-movies" className="burger-menu__nav-link">Сохраненные фильмы</Link>
+            <Link to="/"
+                  className={'burger-menu__nav-link ' + (location.pathname === '/' ? 'burger-menu__nav-link_active' : '')}
+                  onClick={handleClick}>Главная</Link>
+            <Link to="/movies"
+                  className={'burger-menu__nav-link ' + (location.pathname === '/movies' ? 'burger-menu__nav-link_active' : '')}
+                  onClick={handleClick}>Фильмы</Link>
+            <Link to="/saved-movies"
+                  className={'burger-menu__nav-link ' + (location.pathname === '/saved-movies' ? 'burger-menu__nav-link_active' : '')}
+                  onClick={handleClick}>Сохраненные фильмы</Link>
           </nav>
-          <Link to="/profile" className="burger-menu__nav-link burger-menu__nav-link_theme_ellipse">Аккаунт</Link>
+          <Link to="/profile" className="burger-menu__nav-link burger-menu__nav-link_theme_ellipse"
+                onClick={handleClick}>Аккаунт</Link>
         </div>
       </div>
   );

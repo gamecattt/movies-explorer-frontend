@@ -25,6 +25,9 @@
 		color: #4285f4;
 		text-decoration: none;
 		transition: opacity 0.2s;
+		border: none;
+		background: transparent;
+		cursor: pointer;
 
 		&:hover {
 			opacity: 0.8;

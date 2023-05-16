@@ -44,6 +44,9 @@
 		line-height: 16px;
 		margin-bottom: 16px;
 		transition: opacity 0.2s;
+		background: transparent;
+		border: none;
+		cursor: pointer;
 
 		&:hover {
 			opacity: 0.8;
@@ -57,6 +60,20 @@
 		&:last-child {
 			margin: 0;
 		}
+	}
+
+	&__input {
+		text-align: right;
+		background: transparent;
+		color: #fff;
+		border: none;
+		outline: none;
+	}
+
+	.auth-form__error-msg {
+		display: block;
+		text-align: right;
+		margin-bottom: 15px;
 	}
 }
 

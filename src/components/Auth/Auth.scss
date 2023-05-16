@@ -48,9 +48,7 @@
 		}
 
 		&:disabled {
-			opacity: 0.2;
-			color: #202020;
-			background: transparent;
+			background: #2f2f2f;
 			cursor: default;
 		}
 	}

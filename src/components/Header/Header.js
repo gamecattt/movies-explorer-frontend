@@ -3,17 +3,19 @@ import './Header.scss'
 import {Link, useLocation} from "react-router-dom";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
-function Header() {
+function Header({loggedIn}) {
   const location = useLocation();
-  const loggedIn = location.pathname === '/';
 
   return (
       <header className="header">
         <div className="header__left">
           <Logo/>
           {loggedIn ? <nav className="header__nav">
-            <Link to="/movies" className="header__nav-link header__nav-link_active">Фильмы</Link>
-            <Link to="/saved-movies" className="header__nav-link">Сохраненные фильмы</Link>
+            <Link to="/movies"
+                  className={'header__nav-link ' + (location.pathname === '/movies' ? 'header__nav-link_active' : '')}>Фильмы</Link>
+            <Link to="/saved-movies"
+                  className={'header__nav-link ' + (location.pathname === '/saved-movies' ? 'header__nav-link_active' : '')}>Сохраненные
+              фильмы</Link>
           </nav> : ''}
         </div>
         <div className="header__auth">
@@ -29,8 +31,6 @@ function Header() {
               </>
           }
         </div>
-
-
       </header>
   );
 }
