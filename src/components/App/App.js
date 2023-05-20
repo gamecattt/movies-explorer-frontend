@@ -15,6 +15,7 @@ import MainApi from "../../utils/MainApi";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import MoviesApi from "../../utils/MoviesApi";
 import formatMovie from "../../models/Movie";
+import GuestRoute from "../GuestRoute";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -167,8 +168,8 @@ function App() {
                                             onSearch={handleSearch}/>}/>
             <Route path="/profile" element={<ProtectedRoute element={Profile} loggedIn={loggedIn} onLogout={logout}
                                                             onUpdate={updateUser}/>}/>
-            <Route path="/signin" element={<Login onLogin={login}/>}/>
-            <Route path="/signup" element={<Register/>}/>
+            <Route path="/signin" element={<GuestRoute element={Login} loggedIn={loggedIn} onLogin={login} />}/>
+            <Route path="/signup" element={<GuestRoute element={Register} loggedIn={loggedIn} />}/>
             <Route path="*" element={<ErrorPage/>}/>
           </Routes>
           {['/', '/movies', '/saved-movies'].includes(location.pathname) ? <Footer/> : ''}
