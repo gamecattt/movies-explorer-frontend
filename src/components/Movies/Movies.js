@@ -3,6 +3,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import './Movies.scss'
 import Preloader from "../Preloader/Preloader";
 import {useEffect, useState} from "react";
+import {SHORT_MOVIE_DURATION} from "../../utils/constants";
 
 function Movies({movies, savedMovies, isLoading, onSaveMovie, onSearch}) {
 
@@ -24,7 +25,7 @@ function Movies({movies, savedMovies, isLoading, onSaveMovie, onSearch}) {
 
     const filteredMovies = movies
         .filter(m => m.nameRU.toLowerCase().includes(searchString.toLowerCase()))
-        .filter(m => !isShort || m.duration <= 40);
+        .filter(m => !isShort || m.duration <= SHORT_MOVIE_DURATION);
     setFilteredMovies(filteredMovies);
     // onSearch(searchString, isShort);
   }

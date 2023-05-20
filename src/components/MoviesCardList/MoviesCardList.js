@@ -1,6 +1,16 @@
 import MoviesCard from "../MoviesCard/MoviesCard";
 import './MoviesCardList.scss'
 import {useEffect, useState} from "react";
+import {
+  DESKTOP_BREAKPOINT,
+  FIRST_RENDER_MOVIES_COUNT_DESKTOP,
+  FIRST_RENDER_MOVIES_COUNT_MOBILE,
+  FIRST_RENDER_MOVIES_COUNT_TABLET,
+  LOAD_MORE_MOVIES_COUNT_DESKTOP,
+  LOAD_MORE_MOVIES_COUNT_MOBILE,
+  LOAD_MORE_MOVIES_COUNT_TABLET,
+  TABLET_BREAKPOINT
+} from "../../utils/constants";
 
 function MoviesCardList({movies, savedMovies, isSavedList, onButtonClick}) {
 
@@ -30,14 +40,14 @@ function MoviesCardList({movies, savedMovies, isSavedList, onButtonClick}) {
   const firstRender = () => {
     const width = window.innerWidth;
     switch (true) {
-      case width >= 993:
-        setEndIndex(12)
+      case width >= DESKTOP_BREAKPOINT:
+        setEndIndex(FIRST_RENDER_MOVIES_COUNT_DESKTOP)
         break;
-      case width >= 481:
-        setEndIndex(8)
+      case width >= TABLET_BREAKPOINT:
+        setEndIndex(FIRST_RENDER_MOVIES_COUNT_TABLET)
         break;
       default:
-        setEndIndex(5)
+        setEndIndex(FIRST_RENDER_MOVIES_COUNT_MOBILE)
         break;
     }
     handleResize();
@@ -59,14 +69,14 @@ function MoviesCardList({movies, savedMovies, isSavedList, onButtonClick}) {
     resizeTimer = setTimeout(() => {
       const width = window.innerWidth;
       switch (true) {
-        case width >= 993:
-          setPerPage(3);
+        case width >= DESKTOP_BREAKPOINT:
+          setPerPage(LOAD_MORE_MOVIES_COUNT_DESKTOP);
           break;
-        case width >= 481:
-          setPerPage(2);
+        case width >= TABLET_BREAKPOINT:
+          setPerPage(LOAD_MORE_MOVIES_COUNT_TABLET);
           break;
         default:
-          setPerPage(1);
+          setPerPage(LOAD_MORE_MOVIES_COUNT_MOBILE);
           break;
       }
     }, 300);
