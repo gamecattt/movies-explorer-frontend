@@ -1,6 +1,6 @@
 import './Profile.scss'
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 import MainApi from "../../utils/MainApi";
 import FieldError from "../FieldError";
@@ -11,14 +11,26 @@ function Profile({onLogout, onUpdate}) {
 
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSame, setIsSame] = useState(true);
 
-  const {register, handleSubmit, formState: {errors, isValid}} = useForm({
+  const {register, getValues, watch, handleSubmit, formState: {errors, isValid}} = useForm({
     mode: "onBlur",
     defaultValues: {
       name: currentUser.name,
       email: currentUser.email,
     }
   });
+
+  useEffect(() => {
+    checkIsSame();
+    watch(() => checkIsSame());
+  }, [watch])
+
+  const checkIsSame = () => {
+    const data = getValues();
+    const isSame = data.name === currentUser.name && data.email === currentUser.email;
+    setIsSame(isSame)
+  }
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -77,7 +89,7 @@ function Profile({onLogout, onUpdate}) {
           </div>
           <div className="user-info__links">
             {error && <span className="auth-form__error-msg">Произошла ошибка</span>}
-            <button type="submit" className="user-info__link" disabled={!isValid || isLoading}>Редактировать</button>
+            <button type="submit" className="user-info__link" disabled={!isValid || isLoading || isSame}>Редактировать</button>
             <a className="user-info__link user-info__link_type_color" href="#" onClick={handleLogout}>Выйти из
               аккаунта</a>
           </div>
