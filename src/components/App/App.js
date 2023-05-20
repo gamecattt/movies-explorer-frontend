@@ -169,7 +169,7 @@ function App() {
             <Route path="/profile" element={<ProtectedRoute element={Profile} loggedIn={loggedIn} onLogout={logout}
                                                             onUpdate={updateUser}/>}/>
             <Route path="/signin" element={<GuestRoute element={Login} loggedIn={loggedIn} onLogin={login} />}/>
-            <Route path="/signup" element={<GuestRoute element={Register} loggedIn={loggedIn} />}/>
+            <Route path="/signup" element={<GuestRoute element={Register} loggedIn={loggedIn} onLogin={login} />}/>
             <Route path="*" element={<ErrorPage/>}/>
           </Routes>
           {['/', '/movies', '/saved-movies'].includes(location.pathname) ? <Footer/> : ''}

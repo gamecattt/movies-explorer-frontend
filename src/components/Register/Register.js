@@ -6,7 +6,7 @@ import MainApi from "../../utils/MainApi";
 import {useForm} from "react-hook-form";
 import FieldError from "../FieldError";
 
-function Register() {
+function Register({ onLogin }) {
   const navigate = useNavigate();
 
   const [error, setError] = useState(null);
@@ -16,17 +16,27 @@ function Register() {
     mode: "onBlur"
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     setError(null);
     setIsLoading(true);
-    MainApi.signup(data)
-        .then((res) => {
-          if (res._id) {
-            navigate('/signin', {replace: true});
-          }
-        })
-        .catch((err) => setError(err))
-        .finally(() => setIsLoading(false));
+
+    try {
+      await MainApi.signup(data);
+      const res = await MainApi.signin({
+        email: data.email,
+        password: data.password,
+      });
+
+      if (res.token) {
+        localStorage.setItem('token', res.token);
+        onLogin();
+        navigate('/movies', {replace: true});
+      }
+    } catch (err) {
+      setError(err);
+    }
+
+    setIsLoading(false);
   };
 
   return (
