@@ -150,10 +150,6 @@ function App() {
     })
   }
 
-  const handleSearch = (searchString, isShort) => {
-
-  }
-
   return isLoading ? '' : (
       <CurrentUserContext.Provider value={currentUser}>
         <div className="page__wrapper">
@@ -163,11 +159,10 @@ function App() {
             <Route path="/" element={<Main/>}/>
             <Route path="/movies" element={<ProtectedRoute element={Movies} loggedIn={loggedIn} movies={movies}
                                                            savedMovies={savedMovies} isLoading={isLoading}
-                                                           onSaveMovie={handleSaveMovie} onSearch={handleSearch}/>}/>
+                                                           onSaveMovie={handleSaveMovie} />}/>
             <Route path="/saved-movies"
                    element={<ProtectedRoute element={SavedMovies} loggedIn={loggedIn} savedMovies={savedMovies}
-                                            isLoading={isLoading} onDeleteMovie={handleDeleteMovie}
-                                            onSearch={handleSearch}/>}/>
+                                            isLoading={isLoading} onDeleteMovie={handleDeleteMovie} />}/>
             <Route path="/profile" element={<ProtectedRoute element={Profile} loggedIn={loggedIn} onLogout={logout}
                                                             onUpdate={updateUser}/>}/>
             <Route path="/signin" element={<GuestRoute element={Login} loggedIn={loggedIn} onLogin={login} />}/>

@@ -11,16 +11,18 @@ function Movies({ movies, savedMovies, isLoading, onSaveMovie, onSearch }) {
   const [hasError, setHasError] = useState(false);
   const [searchString, setSearchString] = useState('');
   const [isShort, setIsShort] = useState(false);
+  const [isFirstRender, setIsFirstRender] = useState(true);
 
   useEffect(() => {
     setFilteredMovies(movies);
-    setSearchString(localStorage.getItem('search-string') || '')
-    setIsShort(!!localStorage.getItem('is-short') || false)
+    setSearchString(localStorage.getItem('search-string') || '');
+    setIsShort(!!localStorage.getItem('is-short'));
+    setIsFirstRender(false);
   }, []);
 
   useEffect(() => {
     search();
-  }, [isShort])
+  }, [isShort, isFirstRender])
 
   const handleSaveClick = (movie) => {
     onSaveMovie(movie);
