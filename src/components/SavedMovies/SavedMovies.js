@@ -10,7 +10,7 @@ function SavedMovies({savedMovies, isLoading, onDeleteMovie, onSearch}) {
 
   useEffect(() => {
     setFilteredMovies(savedMovies);
-  }, []);
+  }, [savedMovies]);
 
   const handleDeleteClick = (movie) => {
     onDeleteMovie(movie);
