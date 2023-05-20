@@ -6,10 +6,11 @@ import MainApi from "../../utils/MainApi";
 import {useForm} from "react-hook-form";
 import FieldError from "../FieldError";
 
-function Login({onLogin}) {
+function Login({ onLogin }) {
   const navigate = useNavigate();
 
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {register, handleSubmit, formState: {errors, isValid}} = useForm({
     mode: "onBlur"
@@ -17,6 +18,7 @@ function Login({onLogin}) {
 
   const onSubmit = (data) => {
     setError(null);
+    setIsLoading(true);
     MainApi.signin(data)
         .then((res) => {
           if (res.token) {
@@ -25,7 +27,8 @@ function Login({onLogin}) {
             navigate('/movies', {replace: true});
           }
         })
-        .catch((err) => setError(err));
+        .catch((err) => setError(err))
+        .finally(() => setIsLoading(false));
   }
 
   return (
@@ -43,6 +46,7 @@ function Login({onLogin}) {
                 name="email"
                 type="email"
                 required
+                disabled={isLoading}
                 id="email-input"/>
             <FieldError error={errors.email}/>
             <span className="auth-form__caption">Пароль</span>
@@ -52,13 +56,14 @@ function Login({onLogin}) {
                 type="password"
                 name="password"
                 required
+                disabled={isLoading}
                 id="password-input"
             />
             <FieldError error={errors.password}/>
           </div>
           <div className="auth-form__bottom">
             {error && <span className="auth-form__error-msg">Произошла ошибка</span>}
-            <button className="auth-form__btn-submit" type="submit" disabled={!isValid}>Войти</button>
+            <button className="auth-form__btn-submit" type="submit" disabled={!isValid || isLoading}>Войти</button>
             <span className="auth-form__text">
                 Ещё не зарегистрированы? <Link to="/signup" className="auth-form__link">Регистрация</Link>
               </span>

@@ -10,6 +10,7 @@ function Register() {
   const navigate = useNavigate();
 
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {register, handleSubmit, formState: {errors, isValid}} = useForm({
     mode: "onBlur"
@@ -17,13 +18,15 @@ function Register() {
 
   const onSubmit = (data) => {
     setError(null);
+    setIsLoading(true);
     MainApi.signup(data)
         .then((res) => {
           if (res._id) {
             navigate('/signin', {replace: true});
           }
         })
-        .catch((err) => setError(err));
+        .catch((err) => setError(err))
+        .finally(() => setIsLoading(false));
   };
 
   return (
@@ -46,6 +49,7 @@ function Register() {
                 name="name"
                 type="text"
                 id="nickname-input"
+                disabled={isLoading}
             />
             <FieldError error={errors.name}/>
             <span className="auth-form__caption">E-mail</span>
@@ -54,7 +58,9 @@ function Register() {
                 className={'auth-form__input ' + (errors.email ? 'auth-form__input_type_error' : '')}
                 name="email"
                 type="email"
-                id="email-input"/>
+                id="email-input"
+                disabled={isLoading}
+            />
             <FieldError error={errors.email}/>
             <span className="auth-form__caption">Пароль</span>
             <input
@@ -63,12 +69,13 @@ function Register() {
                 type="password"
                 name="password"
                 id="password-input"
+                disabled={isLoading}
             />
             <FieldError error={errors.password}/>
           </div>
           <div className="auth-form__bottom">
             {error && <span className="auth-form__error-msg">Произошла ошибка</span>}
-            <button className="auth-form__btn-submit" type="submit" disabled={!isValid}>Зарегистрироваться</button>
+            <button className="auth-form__btn-submit" type="submit" disabled={!isValid || isLoading}>Зарегистрироваться</button>
             <span className="auth-form__text">
                         Уже зарегистрированы? <Link to="/signin" className="auth-form__link">Войти</Link>
                     </span>

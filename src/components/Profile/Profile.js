@@ -10,6 +10,7 @@ function Profile({onLogout, onUpdate}) {
   const currentUser = useContext(CurrentUserContext);
 
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {register, handleSubmit, formState: {errors, isValid}} = useForm({
     mode: "onBlur",
@@ -30,13 +31,15 @@ function Profile({onLogout, onUpdate}) {
       return;
     }
 
+    setIsLoading(true);
     MainApi
         .updateProfile(data)
         .then((user) => {
           onUpdate(user);
           alert('Профиль обновлен!')
         })
-        .catch((err) => setError(err));
+        .catch((err) => setError(err))
+        .finally(() => setIsLoading(false));
   }
 
   return (
@@ -56,6 +59,7 @@ function Profile({onLogout, onUpdate}) {
                   type="text"
                   placeholder="Имя"
                   className="user-info__input"
+                  disabled={isLoading}
               />
             </div>
             <FieldError error={errors.name}/>
@@ -66,13 +70,14 @@ function Profile({onLogout, onUpdate}) {
                   type="email"
                   placeholder="Email"
                   className="user-info__input"
+                  disabled={isLoading}
               />
             </div>
             <FieldError error={errors.email}/>
           </div>
           <div className="user-info__links">
             {error && <span className="auth-form__error-msg">Произошла ошибка</span>}
-            <button type="submit" className="user-info__link">Редактировать</button>
+            <button type="submit" className="user-info__link" disabled={!isValid || isLoading}>Редактировать</button>
             <a className="user-info__link user-info__link_type_color" href="#" onClick={handleLogout}>Выйти из
               аккаунта</a>
           </div>
