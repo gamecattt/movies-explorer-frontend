@@ -1,28 +1,18 @@
 import './SearchForm.scss'
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import iconArrow from '../../images/icon__arrow.svg';
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
-function SearchForm({onSubmit, term, short}) {
+function SearchForm({ onSubmit, searchString, isShort, onSearchChange, onIsShortChange }) {
 
-  const [searchString, setSearchString] = useState('');
-  const [isShort, setIsShort] = useState(false);
   const [hasError, setHasError] = useState(false);
 
-  useEffect(() => {
-    setSearchString(term);
-  }, [term]);
-
-  useEffect(() => {
-    onSubmit(searchString, isShort);
-  }, [isShort]);
-
   function handleSearchChange(e) {
-    setSearchString(e.target.value);
+    onSearchChange(e.target.value);
   }
 
   function handleIsShortChange(e) {
-    setIsShort(e.target.checked);
+    onIsShortChange(e.target.checked);
   }
 
   function handleSubmit(e) {
@@ -36,7 +26,7 @@ function SearchForm({onSubmit, term, short}) {
         <form className="search__form" action="#" onSubmit={handleSubmit} noValidate={true}>
           <div className="search__input-wrap">
             <input className="search__input" type="text" placeholder="Фильм" required
-                   onChange={handleSearchChange}/>
+                   value={searchString} onChange={handleSearchChange} />
             <button className="search__btn" type="submit">
               <img className="search__btn-img" src={iconArrow} alt="Логотип"/>
             </button>

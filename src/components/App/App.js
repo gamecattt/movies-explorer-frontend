@@ -114,6 +114,8 @@ function App() {
     localStorage.removeItem('token');
     localStorage.removeItem('movies');
     localStorage.removeItem('saved-movies');
+    localStorage.removeItem('search-string');
+    localStorage.removeItem('is-short');
     setLoggedIn(false);
     navigate('/', {replace: true});
   }

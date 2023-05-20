@@ -5,34 +5,52 @@ import Preloader from "../Preloader/Preloader";
 import {useEffect, useState} from "react";
 import {SHORT_MOVIE_DURATION} from "../../utils/constants";
 
-function Movies({movies, savedMovies, isLoading, onSaveMovie, onSearch}) {
+function Movies({ movies, savedMovies, isLoading, onSaveMovie, onSearch }) {
 
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [hasError, setHasError] = useState(false);
+  const [searchString, setSearchString] = useState('');
+  const [isShort, setIsShort] = useState(false);
 
   useEffect(() => {
     setFilteredMovies(movies);
+    setSearchString(localStorage.getItem('search-string') || '')
+    setIsShort(!!localStorage.getItem('is-short') || false)
   }, []);
+
+  useEffect(() => {
+    search();
+  }, [isShort])
 
   const handleSaveClick = (movie) => {
     onSaveMovie(movie);
   }
 
-  const search = (searchString, isShort) => {
+  const search = () => {
     if (!searchString) {
       return;
     }
+
+    localStorage.setItem('search-string', searchString);
+    localStorage.setItem('is-short', isShort ? 'true' : '');
 
     const filteredMovies = movies
         .filter(m => m.nameRU.toLowerCase().includes(searchString.toLowerCase()))
         .filter(m => !isShort || m.duration <= SHORT_MOVIE_DURATION);
     setFilteredMovies(filteredMovies);
-    // onSearch(searchString, isShort);
+  }
+
+  const handleSearchChange = (value) => {
+    setSearchString(value);
+  }
+
+  const handleIsShortChange = (value) => {
+    setIsShort(value);
   }
 
   return (
       <>
-        <SearchForm onSubmit={search}/>
+        <SearchForm onSubmit={search} searchString={searchString} isShort={isShort} onSearchChange={handleSearchChange} onIsShortChange={handleIsShortChange} />
         <section className="movies extra-indent extra-indent_theme_double">
           {isLoading ? <Preloader/> :
               <>
