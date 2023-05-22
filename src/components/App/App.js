@@ -32,8 +32,7 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    handleTokenCheck()
-        .catch(() => setIsLoading(false));
+    handleTokenCheck();
   }, []);
 
   useEffect(() => {
@@ -41,6 +40,8 @@ function App() {
       Promise
           .all([getProfile(), fetchMovies(), fetchSavedMovies()])
           .finally(() => setIsLoading(false));
+    } else {
+      setIsLoading(false)
     }
   }, [loggedIn]);
 

@@ -21,6 +21,10 @@ function Movies({ movies, savedMovies, isLoading, onSaveMovie, onSearch }) {
   }, []);
 
   useEffect(() => {
+    setFilteredMovies(movies);
+  }, [movies]);
+
+  useEffect(() => {
     search();
   }, [isShort, isFirstRender])
 
