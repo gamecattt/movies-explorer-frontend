@@ -6,17 +6,23 @@ import {SHORT_MOVIE_DURATION} from "../../utils/constants";
 
 function SavedMovies({savedMovies, isLoading, onDeleteMovie, onSearch}) {
 
+  const [searchString, setSearchString] = useState('');
+  const [isShort, setIsShort] = useState(false);
   const [filteredMovies, setFilteredMovies] = useState([]);
 
   useEffect(() => {
     setFilteredMovies(savedMovies);
   }, [savedMovies]);
 
+  useEffect(() => {
+    search();
+  }, [isShort])
+
   const handleDeleteClick = (movie) => {
     onDeleteMovie(movie);
   }
 
-  const search = (searchString, isShort) => {
+  const search = () => {
     if (!searchString) {
       return;
     }
@@ -28,9 +34,17 @@ function SavedMovies({savedMovies, isLoading, onDeleteMovie, onSearch}) {
     // onSearch(searchString, isShort);
   }
 
+  const handleSearchChange = (value) => {
+    setSearchString(value);
+  }
+
+  const handleIsShortChange = (value) => {
+    setIsShort(value);
+  }
+
   return (
       <>
-        <SearchForm onSubmit={search}/>
+        <SearchForm onSubmit={search} searchString={searchString} isShort={isShort} onSearchChange={handleSearchChange} onIsShortChange={handleIsShortChange} />
         <section className="movies extra-indent extra-indent_theme_double">
           {isLoading ? <Preloader/> :
               filteredMovies.length ?
