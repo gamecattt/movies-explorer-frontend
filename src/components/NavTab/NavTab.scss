@@ -1,0 +1,49 @@
+.nav-tab {
+
+	&__link {
+		color: #fff;
+		text-decoration: none;
+		display: block;
+		text-align: center;
+		background: #303030;
+		padding: 10px 0;
+		border-radius: 10px;
+		font-weight: 500;
+		font-size: 12px;
+		line-height: 16px;
+		box-sizing: border-box;
+		transition: 0.5s ease;
+
+		&:hover {
+			color: #000;
+			background-color: #3ddc84;
+		}
+	}
+
+	&__list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: grid;
+		grid-template-columns: repeat(3, 96px);
+		justify-content: center;
+		gap: 10px;
+	}
+
+}
+
+
+@media screen and (max-width: 576px) {
+	.nav-tab {
+
+		&__list {
+			gap: 6px;
+			grid-template-columns: repeat(3, 82px);
+		}
+
+		&__link {
+			font-size: 10px;
+		}
+	}
+}
+
