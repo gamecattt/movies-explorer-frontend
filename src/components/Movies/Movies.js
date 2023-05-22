@@ -7,7 +7,7 @@ import {SHORT_MOVIE_DURATION} from "../../utils/constants";
 
 function Movies({ movies, savedMovies, isLoading, onSaveMovie, onSearch }) {
 
-  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState(null);
   const [hasError, setHasError] = useState(false);
   const [searchString, setSearchString] = useState('');
   const [isShort, setIsShort] = useState(false);
@@ -56,7 +56,7 @@ function Movies({ movies, savedMovies, isLoading, onSaveMovie, onSearch }) {
         <section className="movies extra-indent extra-indent_theme_double">
           {isLoading ? <Preloader/> :
               <>
-                {filteredMovies.length && !hasError ?
+                {Array.isArray(filteredMovies) && filteredMovies.length && !hasError ?
                     <MoviesCardList movies={filteredMovies} savedMovies={savedMovies}
                                     onButtonClick={handleSaveClick}/> :
                     <span>Ничего не найдено</span>}

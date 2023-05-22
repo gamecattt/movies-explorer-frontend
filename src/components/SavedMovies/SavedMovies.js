@@ -8,7 +8,7 @@ function SavedMovies({savedMovies, isLoading, onDeleteMovie, onSearch}) {
 
   const [searchString, setSearchString] = useState('');
   const [isShort, setIsShort] = useState(false);
-  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState(null);
 
   useEffect(() => {
     setFilteredMovies(savedMovies);
@@ -47,7 +47,7 @@ function SavedMovies({savedMovies, isLoading, onDeleteMovie, onSearch}) {
         <SearchForm onSubmit={search} searchString={searchString} isShort={isShort} onSearchChange={handleSearchChange} onIsShortChange={handleIsShortChange} />
         <section className="movies extra-indent extra-indent_theme_double">
           {isLoading ? <Preloader/> :
-              filteredMovies.length ?
+              Array.isArray(filteredMovies) && filteredMovies.length ?
                   <ul className="movies__card-list">
                     {filteredMovies.map((movie) =>
                         <MoviesCard key={movie.movieId} movie={movie} onButtonClick={handleDeleteClick}
