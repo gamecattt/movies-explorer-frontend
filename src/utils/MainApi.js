@@ -1,4 +1,4 @@
-export const BASE_HREF = 'https://gamecat-movies-api.nomoredomains.monster/api';
+export const BASE_HREF = 'http://localhost:3000/api';
 
 class MainApi {
   getProfile() {

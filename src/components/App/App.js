@@ -32,7 +32,11 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    handleTokenCheck();
+    handleTokenCheck().then(() => {
+      //
+    }).catch(() => {
+      //
+    });
   }, []);
 
   useEffect(() => {
